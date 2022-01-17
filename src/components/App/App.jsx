@@ -12,15 +12,24 @@ class App extends Component {
   };
 
   addContactInfo = personData => {
+    const { name, number } = personData;
+    const normalizedNameContact = name.toLowerCase();
     const person = {
       id: nanoid(),
-      name: personData.name,
-      number: personData.number,
+      name: name,
+      number: number,
     };
 
-    this.setState(prevState => ({
-      contacts: [...prevState.contacts, person],
-    }));
+    this.findContactName(normalizedNameContact)
+      ? alert(`${name} is already in contacts`)
+      : this.setState(prevState => ({
+          contacts: [...prevState.contacts, person],
+        }));
+  };
+
+  findContactName = newNameData => {
+    const { contacts } = this.state;
+    return contacts.find(({ name }) => name.toLowerCase() === newNameData);
   };
 
   changeFilter = e => {
