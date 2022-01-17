@@ -8,10 +8,9 @@ const ContactList = ({ visibleContacts, onDeleteContact }) => (
     {visibleContacts.map(({ id, name, number }) => (
       <ContactItem
         key={id}
-        id={id}
         name={name}
         number={number}
-        onDeleteContact={onDeleteContact}
+        onDeleteContact={() => onDeleteContact(id)}
       />
     ))}
   </UlContacts>
