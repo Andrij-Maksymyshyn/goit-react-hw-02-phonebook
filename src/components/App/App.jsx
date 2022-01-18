@@ -59,7 +59,7 @@ class App extends Component {
         <h1>Phonebook</h1>
         <ContactForm onSubmit={this.addContactInfo} />
 
-        {contacts[0] && (
+        {contacts.length > 0 && (
           <>
             <h2>Contacts</h2>
 
